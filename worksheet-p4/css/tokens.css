@@ -1,0 +1,72 @@
+
+:root {
+  
+  --blue-700: #1D3A8C;
+  --blue-500: #2563EB;
+
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-300: #CBD5E1;
+  --gray-600: #475569;
+  --gray-900: #0F172A;
+
+  --white: #FFFFFF;
+
+
+  --green-700: #166534;
+  --red-700: #B91C1C;
+
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+
+  --shadow-sm: 0 2px 6px rgb(15 23 42 / 10%);
+  --shadow-md: 0 6px 18px rgb(15 23 42 / 12%);
+
+
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+
+  /* Font */
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+
+
+
+:root {
+  --color-bg: var(--gray-50);
+  --color-surface: var(--white);
+
+  --color-fg: var(--gray-900);
+  --color-muted: var(--gray-600);
+
+  --color-primary: var(--blue-700);
+  --color-primary-hover: var(--blue-500);
+
+  --color-border: var(--gray-300);
+
+  --color-success: var(--green-700);
+  --color-danger: var(--red-700);
+
+  --color-focus: var(--blue-500);
+
+  --color-on-primary: var(--white);
+
+  --page-max-width: 70rem;
+  --card-pad: var(--space-5);
+}
