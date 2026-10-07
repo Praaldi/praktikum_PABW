@@ -192,3 +192,12 @@ ol {
   width: 40%;
 }
 
+.aktif {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+

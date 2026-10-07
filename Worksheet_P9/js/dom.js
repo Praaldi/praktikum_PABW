@@ -13,4 +13,44 @@ const kosong = wajib("#pesan-kosong");
 const barisFilter = wajib("#filter");
 const form = wajib("#kontak form");
 
-console.log(wadah, kosong, barisFilter, form, daftarProyek.length);
+function buatKartu(proyek) {
+  const li = document.createElement("li");   // buat
+  li.className = "kartu";
+  li.textContent = `${proyek.judul} (${proyek.kategori}, ${proyek.tahun})`;  // isi: teks, bukan HTML
+  return li;
+}
+
+function render(daftar) {
+  wadah.textContent = "";            // kosongkan dulu, di baris pertama
+
+  if (daftar.length === 0) {         // keadaan kosong
+    kosong.hidden = false;
+    return;
+  }
+  kosong.hidden = true;
+
+  daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));   // pasang
+}
+
+render(daftarProyek);
+
+function tandaiTombolAktif(tombolAktif) {
+  barisFilter.querySelectorAll("button").forEach((tombol) => {
+    tombol.classList.toggle("aktif", tombol === tombolAktif);
+  });
+}
+
+barisFilter.addEventListener("click", (event) => {
+  const tombol = event.target.closest("button");
+  if (!tombol) return;                       // klik di luar tombol, abaikan
+
+  const kategori = tombol.dataset.kategori;
+  const terpilih = daftarProyek.filter(
+    (proyek) => kategori === "semua" || proyek.kategori === kategori
+  );
+
+  tandaiTombolAktif(tombol);
+  render(terpilih);
+});
+
+tandaiTombolAktif(barisFilter.querySelector('[data-kategori="semua"]'));
