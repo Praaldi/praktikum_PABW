@@ -6,12 +6,13 @@ const profil = {
   alamat: { kota: "Yogyakarta" },
 };
 
-const daftarProyek = [
-  { judul: "Video company profile sekolah", tahun: 2026, selesai: true },
-  { judul: "Pentas teater (SoundMan) di TBY", tahun: 2026, selesai: true },
-  { judul: "Aplikasi tugas proyek kelompok", tahun: 2026, selesai: true },
-  { judul: "Halaman profil PABW", tahun: 2026, selesai: false },
-];
+  export const daftarProyek = [
+    { judul: "Video company profile sekolah", tahun: 2026, selesai: true,  kategori: "media" },
+    { judul: "Pentas teater (SoundMan) di TBY", tahun: 2026, selesai: true,  kategori: "media" },
+    { judul: "Aplikasi tugas proyek kelompok", tahun: 2026, selesai: true,  kategori: "web" },
+    { judul: "Halaman profil PABW",            tahun: 2026, selesai: false, kategori: "web" },
+  ];
+  
 const jumlahProyek = daftarProyek.length;
 const daftarKarya = document.querySelector("#karya ul");
 if (daftarKarya !== null) {

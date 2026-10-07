@@ -12,6 +12,18 @@ const wadah = wajib("#daftar");
 const kosong = wajib("#pesan-kosong");
 const barisFilter = wajib("#filter");
 const form = wajib("#kontak form");
+const tombolKirim = wajib("#kontak button[type='submit']");
+const statusForm = wajib("#status-form");
+const aturan = {
+  nama: (nilai) => (nilai.trim() === "" ? "Isi nama lengkap Anda." : ""),
+  email: (nilai) =>
+    /^\S+@\S+\.\S+$/.test(nilai.trim()) ? "" : "Tulis email dengan format nama@contoh.com.",
+  nim: (nilai) =>
+    /^[0-9]{8}$/.test(nilai.trim()) ? "" : "NIM terdiri dari 8 digit angka, tanpa spasi atau huruf.",
+  pesan: (nilai) =>
+    nilai.trim().length >= 10 ? "" : "Tulis pesan minimal 10 karakter agar jelas maksudnya.",
+};
+
 
 function buatKartu(proyek) {
   const li = document.createElement("li");   // buat
@@ -29,7 +41,9 @@ function render(daftar) {
   }
   kosong.hidden = true;
 
-  daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));   // pasang
+  const bungkus = document.createDocumentFragment();   // isi ulang
+  daftar.forEach((proyek) => bungkus.append(buatKartu(proyek)));
+  wadah.append(bungkus);
 }
 
 render(daftarProyek);

@@ -201,3 +201,12 @@ ol {
   display: none !important;
 }
 
+.galat {
+  display: block;
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+
+[aria-invalid="true"] {
+  border-color: #b3261e;
+}
