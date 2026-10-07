@@ -8,7 +8,7 @@ function wajib(selector) {
   return elemen;
 }
 
-const wadah = wajib("#daftarr");
+const wadah = wajib("#daftar");
 const kosong = wajib("#pesan-kosong");
 const barisFilter = wajib("#filter");
 const form = wajib("#kontak form");
