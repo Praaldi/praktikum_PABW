@@ -8,7 +8,7 @@ function wajib(selector) {
   return elemen;
 }
 
-const wadah = wajib("#daftar");
+const wadah = wajib("#daftarr");
 const kosong = wajib("#pesan-kosong");
 const barisFilter = wajib("#filter");
 const form = wajib("#kontak form");
@@ -68,3 +68,47 @@ barisFilter.addEventListener("click", (event) => {
 });
 
 tandaiTombolAktif(barisFilter.querySelector('[data-kategori="semua"]'));
+
+let sudahCoba = false;
+
+function periksaKolom(kolom) {
+  const pesanGalat = aturan[kolom.name](kolom.value);
+  const tempatGalat = wajib(`#galat-${kolom.name}`);
+  tempatGalat.textContent = pesanGalat;
+  if (pesanGalat === "") kolom.removeAttribute("aria-invalid");
+  else kolom.setAttribute("aria-invalid", "true");
+  return pesanGalat === "";
+}
+
+const semuaKolom = () => Array.from(form.querySelectorAll("input, textarea"));
+const kolomBermasalah = () => semuaKolom().filter((kolom) => !periksaKolom(kolom));
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();     // baris pertama
+  sudahCoba = true;
+
+  const bermasalah = kolomBermasalah();
+  if (bermasalah.length > 0) {
+    statusForm.textContent = "";
+    tombolKirim.disabled = true;
+    bermasalah[0].focus();
+    return;
+  }
+
+  statusForm.textContent = "Terima kasih, pesan Anda sudah tercatat.";
+  form.reset();
+  semuaKolom().forEach((kolom) => {
+    wajib(`#galat-${kolom.name}`).textContent = "";
+    kolom.removeAttribute("aria-invalid");
+  });
+  sudahCoba = false;
+  tombolKirim.disabled = false;
+});
+
+form.addEventListener("input", (event) => {
+  if (!sudahCoba) return;
+  const kolom = event.target;
+  if (!(kolom.name in aturan)) return;
+  periksaKolom(kolom);
+  tombolKirim.disabled = kolomBermasalah().length > 0;
+});
