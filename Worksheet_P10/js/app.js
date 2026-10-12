@@ -75,3 +75,15 @@ document.querySelector("#tentang figure")?.after(barisKeahlian);
 
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
+
+import { ambilNotisia } from './api.js';
+async function tampilkanNotisia() {
+  try {
+    const data = await ambilNotisia();
+    console.log('Data JSON berhasil dimuat:', data);
+  } catch (galat) {
+    console.error('Gagal menampilkan data JSON:', galat);
+  }
+}
+
+tampilkanNotisia();
