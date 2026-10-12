@@ -1,4 +1,4 @@
-import { daftarProyek } from "./app.js";
+
 
 function wajib(selector) {
   const elemen = document.querySelector(selector);
@@ -46,7 +46,7 @@ function render(daftar) {
   wadah.append(bungkus);
 }
 
-render(daftarProyek);
+
 
 function tandaiTombolAktif(tombolAktif) {
   barisFilter.querySelectorAll("button").forEach((tombol) => {
@@ -112,3 +112,10 @@ form.addEventListener("input", (event) => {
   periksaKolom(kolom);
   tombolKirim.disabled = kolomBermasalah().length > 0;
 });
+
+let daftarProyek = [];
+
+export function setDaftarProyek(data) {
+  daftarProyek = data;
+  render(daftarProyek);
+}

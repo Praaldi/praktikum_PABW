@@ -1,3 +1,6 @@
+import { ambilNotisia } from "./api.js";
+import { setDaftarProyek } from "./dom.js"; 
+
 const profil = {
   nama: "Muhammad Pramudya Aldiansyah",
   nim: "25523082",
@@ -76,7 +79,7 @@ document.querySelector("#tentang figure")?.after(barisKeahlian);
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 
-import { ambilNotisia } from './api.js';
+
 async function tampilkanNotisia() {
   try {
     const data = await ambilNotisia();
@@ -87,3 +90,18 @@ async function tampilkanNotisia() {
 }
 
 tampilkanNotisia();
+
+async function tampilkanProyek() {
+  try {
+    const data = await ambilNotisia();
+    if (!Array.isArray(data)) {
+      throw new Error("Format data JSON tidak valid");
+    }
+    setDaftarProyek(data);
+  } catch (galat) {
+    console.error("Gagal menampilkan proyek:", galat);
+  }
+}
+
+tampilkanProyek();
+
