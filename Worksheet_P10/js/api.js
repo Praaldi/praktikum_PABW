@@ -8,10 +8,10 @@ export async function ambilNotisia() {
     if (!respons.ok) {
       throw new Error('status ' + respons.status);
     }
-
     const data = await respons.json();
     return data;
-  } catch (galat) {
+  } 
+  catch (galat) {
     console.error('gagal memuat', galat.message);
     throw galat;
   }
