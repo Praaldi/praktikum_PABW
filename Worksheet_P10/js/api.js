@@ -1,5 +1,5 @@
 
-const ALAMAT = './tidakAdacontoh.json';
+const ALAMAT = './contoh.json';
 
 export async function ambilNotisia() {
   try {
