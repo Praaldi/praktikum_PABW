@@ -13,13 +13,16 @@ export const state = {
 export function muat() {
   try {
     const teks = localStorage.getItem(KUNCI);
+    const isi = JSON.parse(teks);
 
-    if (teks === null) {
+    if (isi?.versi !== VERSI) {
+      localStorage.removeItem(KUNCI);
       return null;
     }
 
-    return JSON.parse(teks);
+    return isi;
   } catch {
+    localStorage.removeItem(KUNCI);
     return null;
   }
 }
