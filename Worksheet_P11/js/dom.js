@@ -1,4 +1,3 @@
-
 export function wajib(selector) {
   const elemen = document.querySelector(selector);
 
@@ -11,28 +10,38 @@ export function wajib(selector) {
   return elemen;
 }
 
-export function render(state) {
-  const wadah = wajib("#daftar");
-  const kosong = wajib("#pesan-kosong");
-
-  const proyekTampil = state.daftarProyek.filter(
+// Memilih proyek berdasarkan kategori di state
+export function saring(state) {
+  return state.daftarProyek.filter(
     (proyek) =>
       state.kategoriAktif === "semua" ||
       proyek.kategori === state.kategoriAktif
   );
+}
 
+// Menggambar ulang daftar proyek berdasarkan state
+export function render(state) {
+  const wadah = wajib("#daftar");
+  const kosong = wajib("#pesan-kosong");
+
+  // 1. Kosongkan daftar lama
   wadah.textContent = "";
 
-  if (proyekTampil.length === 0) {
+  // Ambil daftar proyek yang sesuai dengan kategori aktif
+  const tampil = saring(state);
+
+  // 2. Periksa keadaan kosong
+  if (tampil.length === 0) {
     kosong.hidden = false;
     return;
   }
 
   kosong.hidden = true;
 
+  // 3. Isi ulang daftar proyek
   const bungkus = document.createDocumentFragment();
 
-  proyekTampil.forEach((proyek) => {
+  tampil.forEach((proyek) => {
     const li = document.createElement("li");
     li.className = "kartu";
     li.textContent =
@@ -44,6 +53,7 @@ export function render(state) {
   wadah.append(bungkus);
 }
 
+// Memberi tanda pada tombol kategori yang aktif
 export function tandaiTombolAktif(kategori) {
   const barisFilter = wajib("#filter");
 
@@ -55,12 +65,13 @@ export function tandaiTombolAktif(kategori) {
   });
 }
 
-
+// Menampilkan informasi profil
 export function renderProfil(profil) {
   document.title = `Profil ${profil.nama} — PABW 2026/2027`;
 
   wajib("header h1").textContent = profil.nama;
   wajib(".tagline").textContent = profil.peran;
+
   wajib(".kaki p").textContent =
     `${profil.nama} · ${profil.nim} · 2026`;
 

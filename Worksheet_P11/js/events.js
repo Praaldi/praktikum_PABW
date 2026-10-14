@@ -1,21 +1,17 @@
-
-import { state, setKategoriAktif } from "./state.js";
-import { wajib, render, tandaiTombolAktif } from "./dom.js";
+import { state, pilihKategori } from "./state.js";
+import { wajib, tandaiTombolAktif } from "./dom.js";
 
 const aturan = {
   nama: (nilai) =>
     nilai.trim() === "" ? "Isi nama lengkap Anda." : "",
-
   email: (nilai) =>
     /^\S+@\S+\.\S+$/.test(nilai.trim())
       ? ""
       : "Tulis email dengan format nama@contoh.com.",
-
   nim: (nilai) =>
     /^[0-9]{8}$/.test(nilai.trim())
       ? ""
       : "NIM terdiri dari 8 digit angka, tanpa spasi atau huruf.",
-
   pesan: (nilai) =>
     nilai.trim().length >= 10
       ? ""
@@ -49,30 +45,27 @@ const kolomBermasalah = () =>
 export function pasangEvents() {
   const barisFilter = wajib("#filter");
   form = wajib("#kontak form");
-
   const tombolKirim = wajib("#kontak button[type='submit']");
   const statusForm = wajib("#status-form");
-  
-  // Event untuk tombol filter kategori proyek
+
+  // Event tombol filter kategori
   barisFilter.addEventListener("click", (event) => {
-  const tombol = event.target.closest("button");
+    const tombol = event.target.closest("button");
 
-  if (!tombol) return;
+    if (!tombol) return;
 
-  const kategori = tombol.dataset.kategori;
+    const kategori = tombol.dataset.kategori;
 
-  if (!kategori) return;
+    if (!kategori) return;
 
-  setKategoriAktif(kategori);
+    pilihKategori(kategori);
+    tandaiTombolAktif(kategori);
+  });
 
-  tandaiTombolAktif(kategori);
-  render(state);
-});
-
-  // Tandai kategori aktif ketika aplikasi dimulai
+  // Tandai kategori aktif saat aplikasi dimulai
   tandaiTombolAktif(state.kategoriAktif);
 
-  // Event untuk pengiriman formulir
+  // Event pengiriman formulir
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     sudahCoba = true;
@@ -100,7 +93,7 @@ export function pasangEvents() {
     tombolKirim.disabled = false;
   });
 
-  // Event untuk validasi ketika pengguna mengisi formulir
+  // Event validasi saat pengguna mengetik
   form.addEventListener("input", (event) => {
     if (!sudahCoba) return;
 
@@ -112,13 +105,11 @@ export function pasangEvents() {
     tombolKirim.disabled = kolomBermasalah().length > 0;
   });
 
-  
+  // Tombol atur ulang kategori
   const tombolAturUlang = wajib("#atur-ulang");
 
   tombolAturUlang.addEventListener("click", () => {
-    setKategoriAktif("semua");
+    pilihKategori("semua");
     tandaiTombolAktif("semua");
-    render(state);
   });
-
 }
