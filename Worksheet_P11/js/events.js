@@ -1,4 +1,4 @@
-import { state, pilihKategori } from "./state.js";
+import { state, pilihKategori, aturUlang } from "./state.js";
 import { wajib, tandaiTombolAktif } from "./dom.js";
 
 const aturan = {
@@ -109,7 +109,7 @@ export function pasangEvents() {
   const tombolAturUlang = wajib("#atur-ulang");
 
   tombolAturUlang.addEventListener("click", () => {
-    pilihKategori("semua");
+    aturUlang();
     tandaiTombolAktif("semua");
   });
 }
