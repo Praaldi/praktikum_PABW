@@ -210,3 +210,16 @@ ol {
 [aria-invalid="true"] {
   border-color: #b3261e;
 }
+
+
+/* Tata letak tombol filter karya */
+#filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+#atur-ulang {
+  margin-bottom: var(--space-4);
+}
