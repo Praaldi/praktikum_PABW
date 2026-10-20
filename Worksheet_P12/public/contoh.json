@@ -1,0 +1,37 @@
+[
+{
+"id": 1,
+"judul": "Website Profil Mahasiswa",
+"kategori": "Web Development",
+"deskripsi": "Membuat website profil pribadi yang berisi informasi diri, pendidikan, pengalaman, karya, dan kontak.",
+"teknologi": ["HTML", "CSS", "JavaScript"]
+},
+{
+"id": 2,
+"judul": "Desain Halaman Portofolio",
+"kategori": "UI/UX Design",
+"deskripsi": "Merancang tampilan portofolio yang sederhana, rapi, responsif, dan mudah digunakan oleh pengunjung.",
+"teknologi": ["HTML", "CSS", "Flexbox", "Grid"]
+},
+{
+"id": 3,
+"judul": "Implementasi Layout Responsif",
+"kategori": "Web Development",
+"deskripsi": "Menerapkan Flexbox dan CSS Grid agar tata letak website dapat menyesuaikan ukuran layar desktop maupun perangkat seluler.",
+"teknologi": ["HTML", "CSS", "Flexbox", "Grid"]
+},
+{
+"id": 4,
+"judul": "Interaksi JavaScript",
+"kategori": "JavaScript",
+"deskripsi": "Menambahkan interaksi pada halaman website menggunakan JavaScript dan manipulasi DOM.",
+"teknologi": ["JavaScript", "DOM"]
+},
+{
+"id": 5,
+"judul": "Pengambilan Data JSON",
+"kategori": "Asynchronous JavaScript",
+"deskripsi": "Mengambil dan mengolah data JSON menggunakan Fetch API, async/await, serta penanganan kesalahan dengan try/catch.",
+"teknologi": ["Fetch API", "JSON", "Promise"]
+}
+]
